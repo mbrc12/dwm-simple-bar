@@ -12,7 +12,7 @@ function getbarv
 
 end
 
-set plug_PATH /usr/local/bin/dwmboot/plugs/
+set plug_PATH /usr/local/bin/dwm-simple-bar/plugs/
 
 $plug_PATH/volume &
 $plug_PATH/battery &
