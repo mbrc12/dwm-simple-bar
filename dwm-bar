@@ -1,0 +1,39 @@
+#!/bin/fish
+function getbarv 
+    
+    if set -q $argv[1]
+        set content $$argv[1]  
+    else 
+        set content "--"
+    end
+
+    set barstr "$argv[2]$content"
+    echo $barstr
+
+end
+
+set plug_PATH /usr/local/bin/dwmboot/plugs/
+
+$plug_PATH/volume &
+$plug_PATH/battery &
+$plug_PATH/datetime &
+$plug_PATH/weather &
+$plug_PATH/space &
+$plug_PATH/corona &
+
+while true
+    set CORONA_STR      (getbarv plug_CORONA "c:")
+    set TEMP_STR        (getbarv plug_TEMP "w:")
+    set PREC_STR        (getbarv plug_PREC "p:")
+    set WIND_STR        (getbarv plug_WIND "")
+    set SPACE_STR       (getbarv plug_SPACE "s:")
+    set BATTERY_STR     (getbarv plug_BATTERY "b:")
+    set VOLUME_STR      (getbarv plug_VOLUME "v:")
+    set DATETIME_STR    (getbarv plug_DATETIME " ")
+
+    set plug_BAR $TEMP_STR $WIND_STR $SPACE_STR $BATTERY_STR $VOLUME_STR $DATETIME_STR
+
+    xsetroot -name "$plug_BAR"
+
+    sleep 5s
+end

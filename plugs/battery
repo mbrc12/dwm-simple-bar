@@ -1,0 +1,10 @@
+#!/bin/fish
+
+# Defines plug_BATTERY
+
+set -e plug_BATTERY
+
+while true
+    set -Ux plug_BATTERY (acpi -b | head -n 1 | awk '{ print $4 }' | tr -d ',')
+    sleep 30s
+end

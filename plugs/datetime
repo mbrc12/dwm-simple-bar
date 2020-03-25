@@ -1,0 +1,8 @@
+#!/bin/fish
+
+set -e plug_DATETIME
+
+while true
+    set -Ux plug_DATETIME (date +"%a %Y-%b-%d %H:%M")
+    sleep 10s
+end

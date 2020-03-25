@@ -1,0 +1,8 @@
+#!/bin/fish
+
+set -e plug_VOLUME
+
+while true
+    set -Ux plug_VOLUME (amixer get Master | tail -n 1 | gawk 'match($0, /\[([0-9]+)%\]/, a) {print a[1] "%"}')
+    sleep 10s
+end

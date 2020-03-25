@@ -1,0 +1,9 @@
+#!/bin/fish
+
+set -e plug_SPACE
+
+while true
+    # Replace ubuntu--vg-root with your sda1
+    set -Ux plug_SPACE (df /dev/mapper/ubuntu--vg-root | tail -n 1 | gawk '{printf "%.2f%s", ($4/1024/1024), "GB"}')
+    sleep 10s
+end

@@ -1,0 +1,9 @@
+#!/bin/fish
+
+xrdb $HOME/.Xresources
+xsetroot -solid "#2f444a"
+
+/usr/local/bin/dwmboot/dwm-bar &
+
+exec dwm
+

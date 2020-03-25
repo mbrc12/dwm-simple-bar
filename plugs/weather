@@ -1,0 +1,17 @@
+#!/bin/fish
+
+set -e plug_TEMP
+set -e plug_PREC
+set -e plug_WIND
+
+while true
+    timeout 10 curl --silent "wttr.in/YOURCITY?format=%t,%p,%w" > /tmp/wttr
+
+    if test $status -eq 0     
+        set -Ux plug_TEMP (cat /tmp/wttr | awk -F, '{print $1}')
+        set -Ux plug_PREC (cat /tmp/wttr | awk -F, '{print $2}')
+        set -Ux plug_WIND (cat /tmp/wttr | awk -F, '{print $3}')
+    end 
+    
+    sleep 1m
+end 
